@@ -1,0 +1,71 @@
+@import './tokens.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Hallmark tactile input styling */
+  .input-tactile {
+    @apply w-full px-3.5 py-2.5 bg-paper-50 border border-paper-300 rounded-md text-ink-900 placeholder:text-ink-400 transition-all duration-150;
+    @apply hover:border-ink-400 focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none disabled:bg-paper-200 disabled:cursor-not-allowed disabled:text-ink-500;
+  }
+
+  /* 8-state Button classes */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md font-medium text-sm text-white bg-accent transition-all duration-150 select-none;
+    @apply hover:bg-accent-hover active:translate-y-[1px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md font-medium text-sm text-ink-800 bg-paper-50 border border-paper-300 transition-all duration-150 select-none shadow-tactile-sm;
+    @apply hover:bg-paper-200 hover:border-ink-400 active:translate-y-[1px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-2 rounded-md font-medium text-sm text-ink-700 hover:bg-paper-200 hover:text-ink-900 transition-all duration-150 select-none;
+    @apply active:translate-y-[1px] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-md font-medium text-sm text-red-700 bg-red-50 border border-red-200 hover:bg-red-100 hover:border-red-300 active:translate-y-[1px] transition-all duration-150;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Markdown content styling */
+  .markdown-body {
+    @apply text-ink-800 leading-relaxed space-y-4;
+  }
+  .markdown-body h1 {
+    @apply text-3xl font-serif font-normal text-ink-950 mt-8 mb-4 border-b border-paper-300 pb-2;
+  }
+  .markdown-body h2 {
+    @apply text-2xl font-serif font-normal text-ink-950 mt-6 mb-3;
+  }
+  .markdown-body h3 {
+    @apply text-xl font-serif font-normal text-ink-900 mt-5 mb-2;
+  }
+  .markdown-body p {
+    @apply my-3 text-base leading-7 text-ink-800;
+  }
+  .markdown-body ul {
+    @apply list-disc list-inside my-3 space-y-1 pl-2;
+  }
+  .markdown-body ol {
+    @apply list-decimal list-inside my-3 space-y-1 pl-2;
+  }
+  .markdown-body blockquote {
+    @apply border-l-2 border-accent pl-4 py-1 my-4 italic text-ink-700 bg-paper-200/50 rounded-r-md;
+  }
+  .markdown-body pre {
+    @apply bg-ink-950 text-paper-100 p-4 rounded-lg my-4 overflow-x-auto text-sm font-mono leading-relaxed border border-ink-800;
+  }
+  .markdown-body code:not(pre code) {
+    @apply bg-paper-200 text-accent font-mono text-xs px-1.5 py-0.5 rounded border border-paper-300;
+  }
+  .markdown-body a {
+    @apply text-accent underline underline-offset-2 hover:text-accent-hover transition-colors;
+  }
+  .markdown-body hr {
+    @apply my-8 border-paper-300;
+  }
+}

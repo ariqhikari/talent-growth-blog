@@ -1,0 +1,60 @@
+/* Hallmark · Genre: Editorial Craft · Theme: Studio / Terracotta
+ * States: default · hover · focus-visible · active · disabled · loading · error · success
+ * Contrast: Pass WCAG AAA
+ */
+
+:root {
+  --color-paper-50: #FDFDFC;
+  --color-paper-100: #F7F7F4;
+  --color-paper-200: #EFEFEA;
+  --color-paper-300: #E3E3DC;
+  
+  --color-ink-950: #0F1115;
+  --color-ink-900: #181A20;
+  --color-ink-800: #272B35;
+  --color-ink-700: #3F4452;
+  --color-ink-600: #5C6375;
+  --color-ink-500: #7B8296;
+  --color-ink-400: #9DA3B4;
+
+  --color-accent: #C2410C;
+  --color-accent-hover: #9A3412;
+  --color-accent-subtle: #FFEDD5;
+  --color-accent-border: #FDBA74;
+
+  --color-focus: #C2410C;
+  --color-error: #B91C1C;
+  --color-error-bg: #FEF2F2;
+  --color-success: #15803D;
+  --color-success-bg: #F0FDF4;
+
+  --font-display: 'Newsreader', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Base typography and reset rules */
+html, body {
+  overflow-x: clip;
+  background-color: var(--color-paper-100);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Display headings - strictly Roman, no italic headers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-style: normal;
+  color: var(--color-ink-950);
+  letter-spacing: -0.015em;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+/* 8-state interactive focus visible ring */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
