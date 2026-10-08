@@ -20,3 +20,4 @@ module.exports = {
   validateCreatePost: validate(createRules),
   validateUpdatePost: validate(updateRules),
 };
+

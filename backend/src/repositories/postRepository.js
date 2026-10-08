@@ -44,3 +44,4 @@ const updateById = (id, updates) =>
 const deleteById = (id) => Post.findByIdAndDelete(id);
 
 module.exports = { findAll, findById, create, updateById, deleteById };
+

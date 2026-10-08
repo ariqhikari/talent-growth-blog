@@ -34,3 +34,4 @@ const deriveExcerpt = (content, maxLength = 180) => {
 };
 
 module.exports = { computeReadTime, deriveExcerpt };
+

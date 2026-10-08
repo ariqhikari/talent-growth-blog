@@ -24,3 +24,4 @@ const deleteById = (id) => Comment.findByIdAndDelete(id);
 const deleteByPost = (postId) => Comment.deleteMany({ post: postId });
 
 module.exports = { findByPost, findById, create, updateById, deleteById, deleteByPost };
+

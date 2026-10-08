@@ -61,3 +61,4 @@ const updateProfile = async (userId, updates) => {
 };
 
 module.exports = { register, login, getProfile, updateProfile };
+

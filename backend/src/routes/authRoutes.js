@@ -12,3 +12,4 @@ router.get('/me', authenticate, authController.getMe);
 router.put('/profile', authenticate, validateProfile, authController.updateProfile);
 
 module.exports = router;
+

@@ -10,3 +10,4 @@ router.put('/:id', authenticate, validateComment, commentController.updateCommen
 router.delete('/:id', authenticate, commentController.deleteComment);
 
 module.exports = router;
+

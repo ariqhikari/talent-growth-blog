@@ -17,3 +17,4 @@ const updateById = (id, updates) =>
   User.findByIdAndUpdate(id, updates, { new: true, runValidators: true });
 
 module.exports = { findByEmail, findById, create, updateById };
+

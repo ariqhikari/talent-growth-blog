@@ -34,3 +34,4 @@ const error = (res, message = 'Internal server error', statusCode = HTTP_STATUS.
 };
 
 module.exports = { success, created, paginated, error };
+

@@ -24,3 +24,4 @@ module.exports = {
   validateLogin: validate(loginRules),
   validateProfile: validate(profileRules),
 };
+

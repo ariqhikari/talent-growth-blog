@@ -46,3 +46,4 @@ const deleteComment = async (commentId, requesterId) => {
 };
 
 module.exports = { getCommentsByPost, addComment, updateComment, deleteComment };
+

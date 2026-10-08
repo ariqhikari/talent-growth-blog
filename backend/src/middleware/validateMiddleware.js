@@ -67,3 +67,4 @@ const validate = (rules) => (req, res, next) => {
 };
 
 module.exports = { validate };
+

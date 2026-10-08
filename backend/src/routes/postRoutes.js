@@ -19,3 +19,4 @@ router.delete('/:id', authenticate, postController.deletePost);
 router.post('/:id/comments', authenticate, validateComment, commentController.addComment);
 
 module.exports = router;
+

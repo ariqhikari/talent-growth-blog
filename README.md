@@ -1,84 +1,188 @@
-# Talent Growth Blog Platform
+# Talent Growth — Full-Stack Blog Platform
 
-A production-ready full-stack blog platform built with **React + Tailwind CSS** (frontend) and **Node.js + Express + MongoDB Atlas** (backend), featuring JWT authentication, Markdown editing, server-side search & pagination, and user profile management.
+A full-stack blog platform built with React and Express, backed by MongoDB Atlas. It features JWT authentication, rich Markdown editing, live preview, full-text search, server-side pagination, nested comments, and user profile management.
+
+---
 
 ## Tech Stack
 
-- **Frontend**: React 18, Vite, Tailwind CSS, Lucide Icons, Axios, Marked + DOMPurify
-- **Backend**: Node.js, Express, MongoDB Atlas (Mongoose), JWT, bcryptjs
-- **Deployment**: Vercel (frontend SPA + backend Serverless Functions)
+- **Frontend**: React 18, Vite, Tailwind CSS, Lucide Icons, Axios, Marked, DOMPurify
+- **Backend**: Node.js, Express, MongoDB Atlas via Mongoose, JSON Web Tokens (JWT), bcryptjs
+- **Design Language**: Hallmark Editorial Craft (Newsreader Serif + Plus Jakarta Sans, warm paper palette `#FAFAF8`, 8-state interactive controls)
+- **Deployment**: Vercel (Frontend SPA + Backend Serverless Functions)
 
-## Architecture
+---
 
-Clean layered architecture with strict Separation of Concerns:
-- **Transport Layer**: Routes, validation schemas, auth/authorization middleware
-- **Controller Layer**: HTTP parsing & standardized response envelope
-- **Domain / Service Layer**: Business logic, rules, computed fields
-- **Repository / Data Access Layer**: Mongoose query abstraction
+## Repository Structure
 
-## Getting Started
-
-### Prerequisites
-- Node.js 18+
-- MongoDB Atlas account (or local MongoDB 6+)
-- Vercel CLI (for deployment)
-
-### Local Development
-
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd talent-growth-blog
-   ```
-
-2. Setup backend:
-   ```bash
-   cd backend
-   cp .env.example .env
-   # Fill in your MongoDB Atlas URI and JWT secret
-   npm install
-   npm run dev
-   ```
-
-3. Setup frontend:
-   ```bash
-   cd frontend
-   cp .env.example .env
-   # Set VITE_API_URL to your backend URL
-   npm install
-   npm run dev
-   ```
-
-### Environment Variables
-
-#### Backend (`backend/.env`)
 ```
+full_stack_developer_test_case/
+├── backend/
+│   ├── api/
+│   │   └── index.js             # Vercel serverless entry point
+│   ├── src/
+│   │   ├── config/              # Environment config & MongoDB connection pool
+│   │   ├── constants/           # HTTP status constants
+│   │   ├── errors/              # Domain-specific error class hierarchy
+│   │   ├── middleware/          # JWT auth, rate limiter, validator & error handler
+│   │   ├── models/              # User, Post, and Comment Mongoose schemas
+│   │   ├── repositories/        # Data access abstraction layer
+│   │   ├── services/            # Business logic orchestration
+│   │   ├── controllers/         # HTTP request/response handlers
+│   │   ├── validators/          # Declarative request schema rules
+│   │   ├── routes/              # Express feature routers
+│   │   ├── utils/               # JWT, bcrypt, text analysis & API response helpers
+│   │   └── app.js               # Express application initialization
+│   ├── tests/                   # Automated API integration tests (Supertest + Jest)
+│   ├── server.js                # Local server entry
+│   ├── vercel.json              # Backend Vercel serverless configuration
+│   └── package.json
+├── frontend/
+│   ├── src/
+│   │   ├── api/                 # Centralized Axios client & API services
+│   │   ├── components/
+│   │   │   ├── common/          # Atomic 8-state UI controls (Button, Input, Modal, etc.)
+│   │   │   ├── layout/          # Navbar, Footer, and AppLayout
+│   │   │   ├── posts/           # PostCard, SearchBar, CategoryFilter, MarkdownEditor
+│   │   │   └── comments/        # CommentSection, CommentItem, CommentForm
+│   │   ├── context/             # AuthContext & ToastContext
+│   │   ├── hooks/               # useAuth, useToast, useDebounce
+│   │   ├── pages/               # Routed pages (Home, Detail, Create, Edit, Profile, Auth)
+│   │   ├── routes/              # AppRoutes and ProtectedRoute guards
+│   │   ├── styles/              # Hallmark design tokens & Tailwind directives
+│   │   └── utils/               # Date formatters & DOMPurify Markdown sanitization
+│   ├── index.html
+│   ├── tailwind.config.js
+│   ├── vite.config.js
+│   ├── vercel.json              # SPA rewrite rule for client routing
+│   └── package.json
+└── README.md
+```
+
+---
+
+## Getting Started Locally
+
+### 1. Prerequisites
+- Node.js 18+ (tested on v22)
+- MongoDB Atlas cluster or local MongoDB instance
+
+### 2. Backend Setup
+```bash
+cd backend
+cp .env.example .env
+```
+Configure your `.env` variables:
+```env
 PORT=5000
 NODE_ENV=development
-MONGODB_URI=mongodb+srv://<user>:<pass>@cluster.mongodb.net/talent-growth
-JWT_SECRET=your-super-secret-jwt-key
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/talent-growth?retryWrites=true&w=majority
+JWT_SECRET=your-secure-jwt-secret-key-min-32-chars
 JWT_EXPIRES_IN=7d
 FRONTEND_URL=http://localhost:5173
 ```
-
-#### Frontend (`frontend/.env`)
+Install dependencies and run:
+```bash
+npm install
+npm run dev
 ```
+The API server starts at `http://localhost:5000/api`.
+
+### 3. Frontend Setup
+In a separate terminal:
+```bash
+cd frontend
+cp .env.example .env
+```
+Ensure `frontend/.env` points to the backend:
+```env
 VITE_API_URL=http://localhost:5000/api
 ```
+Install dependencies and run:
+```bash
+npm install
+npm run dev
+```
+Open `http://localhost:5173` in your browser.
 
-## Features
+---
 
-- **Core**: Full CRUD for blog posts and comments with author-only authorization
-- **Auth**: Secure registration and login with JWT, passwords hashed via bcryptjs
-- **Search**: Real-time debounced search across post titles and content
-- **Pagination**: Server-side pagination with navigation controls
-- **Markdown**: Rich Markdown editor with live preview and XSS sanitization
-- **Profiles**: User profile management with avatar customization
+## API Specification
 
-## Deployment (Vercel)
+All responses follow a consistent envelope structure:
 
-Both frontend and backend are deployed on Vercel:
-- Frontend: deployed as a Vite SPA with rewrite rule for React Router
-- Backend: deployed as Express wrapped in a Vercel Serverless Function
+```json
+{
+  "success": true,
+  "statusCode": 200,
+  "message": "Operation completed",
+  "data": { ... }
+}
+```
 
-See `vercel.json` in each workspace for configuration.
+### Authentication (`/api/auth`)
+- `POST /api/auth/register` — Register a new account (`name`, `email`, `password`)
+- `POST /api/auth/login` — Log in with email and password, returns signed JWT
+- `GET /api/auth/me` — Fetch current user profile (Bearer token required)
+- `PUT /api/auth/profile` — Update name, bio, and avatar (Bearer token required)
+
+### Posts (`/api/posts`)
+- `GET /api/posts` — Retrieve paginated posts. Query params:
+  - `page`: Page number (default: 1)
+  - `limit`: Items per page (default: 10, max: 50)
+  - `search`: Search keywords against title and content
+  - `category`: Filter by category (`General`, `Engineering`, `Design`, `Product`, `Career`, `Notes`)
+  - `author`: Filter by author user ID
+- `GET /api/posts/:id` — Retrieve single post with populated author info
+- `POST /api/posts` — Create a new post (Bearer token required)
+- `PUT /api/posts/:id` — Update a post (Bearer token required; author-only)
+- `DELETE /api/posts/:id` — Delete a post and its associated comments (Bearer token required; author-only)
+
+### Comments (`/api/posts/:id/comments` & `/api/comments/:id`)
+- `GET /api/posts/:id/comments` — List all comments for a post
+- `POST /api/posts/:id/comments` — Add comment to a post (Bearer token required)
+- `PUT /api/comments/:id` — Edit an existing comment (Bearer token required; author-only)
+- `DELETE /api/comments/:id` — Delete a comment (Bearer token required; author-only)
+
+---
+
+## Running Automated Tests
+
+Run the integration test suite covering auth flows, post management, and nested comments:
+
+```bash
+cd backend
+npm test
+```
+
+---
+
+## Deployment to Vercel
+
+### Deploying Frontend
+1. Import the repository in Vercel.
+2. Set Root Directory to `frontend`.
+3. Add Environment Variable:
+   - `VITE_API_URL`: Your deployed backend API URL (e.g., `https://your-backend.vercel.app/api`)
+4. Deploy. The included `frontend/vercel.json` ensures client-side routing works on page refreshes.
+
+### Deploying Backend
+1. Import the repository in Vercel as a second project (or monorepo app).
+2. Set Root Directory to `backend`.
+3. Add Environment Variables:
+   - `MONGODB_URI`: Your MongoDB Atlas connection string
+   - `JWT_SECRET`: A strong secret string
+   - `JWT_EXPIRES_IN`: `7d`
+   - `NODE_ENV`: `production`
+   - `FRONTEND_URL`: Your deployed frontend Vercel URL
+4. Deploy. `backend/api/index.js` acts as the serverless function handler with Mongoose connection pooling.
+
+---
+
+## Design Decisions & Architectural Notes
+
+1. **Clean Architecture Separation**: Business rules reside strictly within the service layer. Controllers only handle HTTP concerns, while repositories isolate Mongoose queries.
+2. **Author Authorization**: Handled directly in services and controllers to ensure users cannot tamper with stories or comments they do not own.
+3. **XSS Protection**: Markdown input is rendered using `marked` and sanitized with `DOMPurify` before injecting into the DOM, preventing script injection.
+4. **Serverless Connection Pooling**: `backend/src/config/database.js` caches the Mongoose connection globally across serverless function invocations on Vercel to avoid connection limits and latency spikes.
+5. **Hallmark Design Discipline**: Uses high-contrast serif typography for headings, clean sans-serif for reading ergonomics, warm paper background tones, and 8-state interactive feedback on buttons and inputs.

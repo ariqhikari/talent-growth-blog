@@ -54,3 +54,4 @@ const deletePost = async (req, res, next) => {
 };
 
 module.exports = { getPosts, getPost, createPost, updatePost, deletePost };
+

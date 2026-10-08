@@ -91,3 +91,4 @@ const deletePost = async (postId, requesterId) => {
 };
 
 module.exports = { getPosts, getPostById, createPost, updatePost, deletePost };
+

@@ -9,3 +9,4 @@ const commentRules = {
 module.exports = {
   validateComment: validate(commentRules),
 };
+

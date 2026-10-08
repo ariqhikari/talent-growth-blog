@@ -61,3 +61,4 @@ postSchema.index({ category: 1 });
 postSchema.index({ author: 1 });
 
 module.exports = mongoose.model('Post', postSchema);
+
