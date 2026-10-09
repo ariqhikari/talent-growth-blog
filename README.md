@@ -61,7 +61,40 @@ full_stack_developer_test_case/
 
 ---
 
+## Demo Accounts & Seeder
+
+The project ships with a seeder that fills the database with 5 author personas, 8 full-length technical articles, and 17 comments — enough for the platform to feel like a running publication rather than an empty shell.
+
+### Run the seeder
+
+```bash
+cd backend
+
+# First run — skip if seed users already exist
+npm run seed
+
+# Force a clean slate and re-seed
+npm run seed:clean
+```
+
+### Demo credentials
+
+All five accounts share the same password: `Password123!`
+
+| Name | Email |
+|---|---|
+| Elena Rostova | `elena@talentgrowth.dev` |
+| Marcus Chen | `marcus@talentgrowth.dev` |
+| Aria Tanaka | `aria@talentgrowth.dev` |
+| Devon Miller | `devon@talentgrowth.dev` |
+| Sarah Jenkins | `sarah@talentgrowth.dev` |
+
+The seeder is idempotent: running `npm run seed` a second time without `--clean` is a no-op if seed users are already present.
+
+---
+
 ## Getting Started Locally
+
 
 ### 1. Prerequisites
 - Node.js 18+ (tested on v22)
