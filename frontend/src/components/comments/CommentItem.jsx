@@ -108,3 +108,4 @@ export function CommentItem({ comment, currentUserId, onUpdate, onDelete }) {
     </div>
   );
 }
+

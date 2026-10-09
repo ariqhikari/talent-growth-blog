@@ -56,3 +56,4 @@ export function PostCard({ post }) {
     </article>
   );
 }
+

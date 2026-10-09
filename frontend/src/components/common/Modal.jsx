@@ -51,3 +51,4 @@ export function Modal({ isOpen, onClose, title, children, maxWidth = 'max-w-md' 
 export function Skeleton({ className = '' }) {
   return <div className={`animate-pulse bg-paper-300/70 rounded ${className}`} />;
 }
+
