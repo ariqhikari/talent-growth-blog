@@ -6,3 +6,4 @@ export const commentApi = {
   updateComment: (commentId, payload) => client.put(`/comments/${commentId}`, payload),
   deleteComment: (commentId) => client.delete(`/comments/${commentId}`),
 };
+

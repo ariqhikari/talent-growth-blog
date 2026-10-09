@@ -7,3 +7,4 @@ export const postApi = {
   updatePost: (id, payload) => client.put(`/posts/${id}`, payload),
   deletePost: (id) => client.delete(`/posts/${id}`),
 };
+

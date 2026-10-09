@@ -6,3 +6,4 @@ export const authApi = {
   getMe: () => client.get('/auth/me'),
   updateProfile: (payload) => client.put('/auth/profile', payload),
 };
+

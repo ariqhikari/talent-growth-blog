@@ -14,3 +14,4 @@ export function useToast() {
     info: (msg, duration) => context.addToast(msg, 'info', duration),
   };
 }
+
