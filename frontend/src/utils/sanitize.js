@@ -20,3 +20,4 @@ export function renderMarkdown(markdownString) {
     ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'target', 'rel', 'class'],
   });
 }
+
