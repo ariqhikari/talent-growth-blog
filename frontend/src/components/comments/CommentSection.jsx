@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../common/Button';
 import { Avatar } from '../common/Avatar';
+import { CommentItem } from './CommentItem';
 import { useAuth } from '../../hooks/useAuth';
 import { MessageSquare, Send } from 'lucide-react';
 

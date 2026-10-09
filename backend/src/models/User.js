@@ -47,8 +47,7 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-// Index for frequent email lookups during login
-userSchema.index({ email: 1 });
+
 
 module.exports = mongoose.model('User', userSchema);
 
