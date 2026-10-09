@@ -62,7 +62,7 @@ export function ProfilePage() {
     return () => {
       isMounted = false;
     };
-  }, [user, toastError]);
+  }, [user?._id, toastError]);
 
   const handleOpenEditModal = () => {
     setName(user?.name || '');

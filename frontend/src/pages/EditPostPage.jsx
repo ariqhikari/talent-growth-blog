@@ -60,7 +60,7 @@ export function EditPostPage() {
     return () => {
       isMounted = false;
     };
-  }, [id, user, navigate, toastError]);
+  }, [id, user?._id, navigate]); // toastError stable via useCallback — user._id is a stable primitive
 
   const validate = () => {
     const errs = {};

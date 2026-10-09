@@ -66,7 +66,7 @@ export function HomePage() {
     return () => {
       isMounted = false;
     };
-  }, [currentPage, debouncedSearch, selectedCategory, toastError]);
+  }, [currentPage, debouncedSearch, selectedCategory]); // toastError stable via useCallback — omitted intentionally
 
   return (
     <div className="space-y-10">

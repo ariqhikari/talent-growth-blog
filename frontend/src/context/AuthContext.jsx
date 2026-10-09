@@ -93,19 +93,22 @@ export function AuthProvider({ children }) {
     localStorage.setItem('user', JSON.stringify(updatedUserData));
   }, []);
 
+  const value = React.useMemo(
+    () => ({
+      user,
+      token,
+      isAuthenticated: !!token && !!user,
+      isLoading,
+      login,
+      register,
+      logout,
+      updateUser,
+    }),
+    [user, token, isLoading, login, register, logout, updateUser]
+  );
+
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        token,
-        isAuthenticated: !!token && !!user,
-        isLoading,
-        login,
-        register,
-        logout,
-        updateUser,
-      }}
-    >
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );

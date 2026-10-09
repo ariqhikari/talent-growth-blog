@@ -59,7 +59,7 @@ export function PostDetailPage() {
     return () => {
       isMounted = false;
     };
-  }, [id, navigate, toastError]);
+  }, [id, navigate]); // toastError is stable via useCallback — omitted intentionally
 
   const handleDeletePost = async () => {
     try {
