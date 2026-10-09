@@ -4,6 +4,13 @@ A full-stack blog platform built with React and Express, backed by MongoDB Atlas
 
 ---
 
+## 🌐 Live Production Deployments
+
+- **Frontend Application**: [https://talent-growth-blog-frontend.vercel.app](https://talent-growth-blog-frontend.vercel.app/)
+- **Backend REST API**: [https://talent-growth-blog-api.vercel.app/api](https://talent-growth-blog-api.vercel.app/api)
+
+---
+
 ## Tech Stack
 
 - **Frontend**: React 18, Vite, Tailwind CSS, Lucide Icons, Axios, Marked, DOMPurify
